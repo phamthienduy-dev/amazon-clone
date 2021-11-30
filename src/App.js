@@ -1,22 +1,57 @@
-import "./App.css";
+import React, { useEffect } from "react";
+
+import styles from "./App.module.css";
 
 import Header from "../src/components/Header/Header";
 import Home from "./pages/Home/Home";
 import Checkout from "./pages/Checkout/Checkout";
+import Login from "./pages/Login/Login";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { auth } from "./firebase";
+import { useStateValue } from "././context/StateProvider";
 
-const App = () => {
+function App() {
+  const [{}, dispatch] = useStateValue();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+      console.log("THE USER IS >>>", authUser);
+
+      if (authUser) {
+        dispatch({ type: "SET_USER", user: authUser });
+      } else {
+        dispatch({ type: "SET_USER", user: null });
+      }
+    });
+  }, []);
+
   return (
     <Router>
-      <div className="app">
-        <Header />
+      <div className={styles.app}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <Header />
+                <Home />
+              </>
+            }
+          />
+          <Route
+            path="/checkout"
+            element={
+              <>
+                <Header />
+                <Checkout />
+              </>
+            }
+          />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>
   );
-};
+}
 
 export default App;
