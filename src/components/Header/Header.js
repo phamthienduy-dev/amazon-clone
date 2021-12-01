@@ -17,7 +17,7 @@ function Header() {
 
   return (
     <div className={styles.header}>
-      <Link to="/">
+      <Link to="/" className={styles.header__logoLink}>
         <img
           className={styles.header__logo}
           src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
@@ -35,7 +35,7 @@ function Header() {
             onClick={authenticationHandler}
           >
             <span className={styles.header__optionLineOne}>
-              {user ? `Hello ${user.email}` : "Hello Guest"}
+              Hello {user ? `${user?.email}` : "Guest"}
             </span>
             <span className={styles.header__optionLineTwo}>
               {user ? "Sign Out" : "Sign In"}
