@@ -10,14 +10,18 @@ import Payment from "./pages/Payment/Payment";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { auth } from "./firebase";
 import { useStateValue } from "././context/StateProvider";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+const promise = loadStripe(
+  "pk_test_51K3G8bLpPpf42d4wPneJF8CYSKuz1S9mmu3Ys8nHf4pLBpVKb8K3T9sFsCKd41ELY8k5TdhAO0fSI1gPaw4D8yGj00GAJ4mMTY"
+);
 
 function App() {
   const [{}, dispatch] = useStateValue();
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
-      console.log("THE USER IS >>>", authUser);
-
       if (authUser) {
         dispatch({ type: "SET_USER", user: authUser });
       } else {
@@ -54,7 +58,9 @@ function App() {
             element={
               <>
                 <Header />
-                <Payment />
+                <Elements stripe={promise}>
+                  <Payment />
+                </Elements>
               </>
             }
           />

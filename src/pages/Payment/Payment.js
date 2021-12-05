@@ -1,12 +1,65 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import styles from "./Payment.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useStateValue } from "../../context/StateProvider";
 import CheckoutProduct from "../../components/Product/CheckoutProduct";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import CurrencyFormat from "react-currency-format";
+import { getBasketTotal } from "../../reducer/reducer";
+import axios from "axios";
 
 function Payment() {
   const [{ basket, user }, dispatch] = useStateValue();
+  const navigate = useNavigate();
+
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const [succeeded, setSucceeded] = useState(false);
+  const [processing, setProcessing] = useState("");
+  const [error, setError] = useState(null);
+  const [disabled, setDisabled] = useState(true);
+  const [clientSecret, setClientSecret] = useState(true);
+
+  useEffect(() => {
+    const getClientSecret = async () => {
+      const response = await axios({
+        method: "post",
+        url: `http://localhost:5001/clone-2250a/us-central1/api/payments/create?total=${
+          getBasketTotal(basket) * 100
+        }`,
+      });
+      setClientSecret(response.data.clientSecret);
+    };
+
+    getClientSecret();
+  }, [basket]);
+
+  console.log("THE SECRET IS >>>", clientSecret);
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    setProcessing(true);
+
+    const payload = await stripe
+      .confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
+      })
+      .then(({ paymentIntent }) => {
+        setSucceeded(true);
+        setError(null);
+        setProcessing(false);
+        navigate("/orders");
+      });
+  };
+
+  const changeHandler = (e) => {
+    setDisabled(e.empty);
+    setError(e.error ? e.error.message : "");
+  };
 
   return (
     <div className={styles.payment}>
@@ -45,7 +98,25 @@ function Payment() {
           <div className={styles.payment__title}>
             <h3>Payment Method</h3>
           </div>
-          <div className={styles.payment__details}></div>
+          <div className={styles.payment__details}>
+            <form onSubmit={submitHandler}>
+              <CardElement onChange={changeHandler} />
+
+              <div className={styles.payment__priceContainer}>
+                <CurrencyFormat
+                  renderText={(value) => <h3>Order Total: {value}</h3>}
+                  decimalScale={2}
+                  value={getBasketTotal(basket)}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"$"}
+                />
+                <button disabled={processing || disabled || succeeded}>
+                  <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>

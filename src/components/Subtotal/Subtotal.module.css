@@ -18,7 +18,9 @@
   font-size: 13px;
 }
 
-.subtotal button {
+.subtotal button,
+.subtotal button:link,
+.subtotal button:visited {
   background-color: #f0c14b;
   border-radius: 2px;
   width: 100%;
@@ -27,6 +29,12 @@
   margin-top: 10px;
   border-color: #a88734 #9c7e31 #846a29;
   color: #111;
+}
+
+.subtotal button:hover,
+.subtotal button:active {
+  cursor: pointer;
+  box-shadow: 0 0 0 1px black;
 }
 
 .subtotal__gift {
