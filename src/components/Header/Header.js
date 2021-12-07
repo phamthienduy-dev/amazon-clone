@@ -15,6 +15,8 @@ function Header() {
     }
   };
 
+  console.log(user?.email);
+
   return (
     <div className={styles.header}>
       <Link to="/" className={styles.header__logoLink}>
@@ -35,17 +37,22 @@ function Header() {
             onClick={authenticationHandler}
           >
             <span className={styles.header__optionLineOne}>
-              Hello {user ? `${user?.email}` : "Guest"}
+              Hello{" "}
+              {user
+                ? `${(user?.email).substring(0, (user?.email).indexOf("@"))}`
+                : "Guest"}
             </span>
             <span className={styles.header__optionLineTwo}>
               {user ? "Sign Out" : "Sign In"}
             </span>
           </div>
         </Link>
-        <div className={styles.header__option}>
-          <span className={styles.header__optionLineOne}>Returns</span>
-          <span className={styles.header__optionLineTwo}>& Orders</span>
-        </div>
+        <Link to={"/orders"}>
+          <div className={styles.header__option}>
+            <span className={styles.header__optionLineOne}>Returns</span>
+            <span className={styles.header__optionLineTwo}>& Orders</span>
+          </div>
+        </Link>
         <div className={styles.header__option}>
           <span className={styles.header__optionLineOne}>Your</span>
           <span className={styles.header__optionLineTwo}>Prime</span>

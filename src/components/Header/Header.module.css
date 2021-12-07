@@ -80,7 +80,7 @@
   flex-direction: column;
   margin-left: 10px;
   margin-right: 10px;
-  /* padding: 8px; */
+  padding: 3px 0px;
 }
 
 .header__optionLineOne {
@@ -96,6 +96,7 @@
   color: white;
   display: flex;
   align-items: center;
+  padding: 3px 0px;
 }
 
 .header__basketCount {

@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home";
 import Checkout from "./pages/Checkout/Checkout";
 import Login from "./pages/Login/Login";
 import Payment from "./pages/Payment/Payment";
+import Orders from "./pages/Orders/Orders";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { auth } from "./firebase";
 import { useStateValue } from "././context/StateProvider";
@@ -34,6 +35,15 @@ function App() {
     <Router>
       <div className={styles.app}>
         <Routes>
+          <Route
+            path="/orders"
+            element={
+              <>
+                <Header />
+                <Orders />
+              </>
+            }
+          ></Route>
           <Route
             path="/"
             element={

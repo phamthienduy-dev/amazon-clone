@@ -20,8 +20,6 @@ app.use(express.json());
 // - API routes
 app.get("/", (request, response) => response.status(200).send("hello world"));
 
-app.get("/bob", (request, response) => response.status(200).send("Hi Bob"));
-
 app.post("/payments/create", async (request, response) => {
   const total = request.query.total;
 
@@ -40,6 +38,3 @@ app.post("/payments/create", async (request, response) => {
 
 // - Listen command
 exports.api = functions.https.onRequest(app);
-
-// Example endpoint
-// http://localhost:5001/clone-2250a/us-central1/api

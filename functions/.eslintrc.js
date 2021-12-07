@@ -4,11 +4,17 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: [
-    "eslint:recommended",
-    "google",
-  ],
+  parser: "babel-eslint",
+  // extends: ["eslint:recommended", "google"],
   rules: {
     quotes: ["error", "double"],
   },
+  // parserOptions: {
+  //   sourceType: "module",
+  //   ecmaVersion: 2017,
+  //   ecmaFeatures: {
+  //     jsx: true,
+  //     experimentalObjectRestSpread: true,
+  //   },
+  // },
 };

@@ -8,6 +8,8 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from "../../reducer/reducer";
 import axios from "axios";
+import { db } from "../../firebase";
+import { doc, setDoc, collection } from "firebase/firestore";
 
 function Payment() {
   const [{ basket, user }, dispatch] = useStateValue();
@@ -26,7 +28,7 @@ function Payment() {
     const getClientSecret = async () => {
       const response = await axios({
         method: "post",
-        url: `http://localhost:5001/clone-2250a/us-central1/api/payments/create?total=${
+        url: `https://us-central1-clone-2250a.cloudfunctions.net/api/payments/create?total=${
           getBasketTotal(basket) * 100
         }`,
       });
@@ -39,6 +41,8 @@ function Payment() {
   console.log("THE SECRET IS >>>", clientSecret);
 
   const submitHandler = async (e) => {
+    const orders = {};
+
     e.preventDefault();
     setProcessing(true);
 
@@ -49,9 +53,34 @@ function Payment() {
         },
       })
       .then(({ paymentIntent }) => {
+        setDoc(
+          doc(db, "users", user?.uid, "orders", paymentIntent.id),
+          // doc(db, "order", paymentIntent.id),
+          {
+            basket: basket,
+            amount: paymentIntent.amount,
+            created: paymentIntent.created,
+          }
+        );
+
+        // query(
+        //   collection("users")
+        //     .doc(user?.uid)
+        //     .collection("orders")
+        //     .doc(paymentIntent.id)
+        //     .set({
+        //       basket: basket,
+        //       amount: paymentIntent.amount,
+        //       created: paymentIntent.created,
+        //     })
+        // );
+
         setSucceeded(true);
         setError(null);
         setProcessing(false);
+
+        dispatch({ type: "EMPTY_BASKET" });
+
         navigate("/orders");
       });
   };
