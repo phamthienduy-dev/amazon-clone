@@ -53,10 +53,6 @@ function Header() {
             <span className={styles.header__optionLineTwo}>& Orders</span>
           </div>
         </Link>
-        <div className={styles.header__option}>
-          <span className={styles.header__optionLineOne}>Your</span>
-          <span className={styles.header__optionLineTwo}>Prime</span>
-        </div>
 
         <Link to="/checkout">
           <div className={styles.header__optionBasket}>

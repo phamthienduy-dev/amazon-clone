@@ -126,6 +126,7 @@ function Payment() {
         <div className={styles.payment__section}>
           <div className={styles.payment__title}>
             <h3>Payment Method</h3>
+            <small>You can use 42 repeatedly for testing.</small>
           </div>
           <div className={styles.payment__details}>
             <form onSubmit={submitHandler}>

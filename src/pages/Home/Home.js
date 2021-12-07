@@ -17,9 +17,9 @@ function Home() {
         <div className={styles.home__row}>
           <Product
             id={nanoid()}
-            title="The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses Hardcover – Illustrated, September 13, 2011"
-            price={3.79}
-            image="https://images-na.ssl-images-amazon.com/images/I/81-QB7nDh4L.jpg"
+            title='Acer Nitro 5 AN515-55-53E5 Gaming Laptop | Intel Core i5-10300H | NVIDIA GeForce RTX 3050 Laptop GPU | 15.6" FHD 144Hz IPS Display | 8GB DDR4 | 256GB NVMe SSD | Intel Wi-Fi 6 | Backlit Keyboard'
+            price={794.99}
+            image="https://m.media-amazon.com/images/I/71m03KItMZL._AC_SL1500_.jpg"
             rating={5}
           />
           <Product

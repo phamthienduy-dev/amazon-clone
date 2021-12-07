@@ -1,4 +1,4 @@
-.login {
+.register {
   background-color: #fff;
   height: 100vh;
   display: flex;
@@ -6,7 +6,7 @@
   align-items: center;
 }
 
-.login__logo {
+.register__logo {
   margin-top: 20px;
   margin-bottom: 20px;
   object-fit: contain;
@@ -15,7 +15,7 @@
   margin-left: auto;
 }
 
-.login__signInContainer {
+.register__signInContainer {
   width: 300px;
   height: fit-content;
   display: flex;
@@ -27,27 +27,27 @@
   margin-bottom: 22px;
 }
 
-.login__signInContainer > h1 {
+.register__signInContainer > h1 {
   font-weight: 500;
   margin-bottom: 20px;
 }
 
-.login__signInContainer > div > p {
+.register__signInContainer > div > p {
   margin-top: 15px;
   font-size: 12px;
 }
 
-.login__signInContainer > div > form {
+.register__signInContainer > div > form {
   display: flex;
   flex-direction: column;
 }
 
-.login__signInContainer > div > form > label {
+.register__signInContainer > div > form > label {
   margin-bottom: 5px;
   font-weight: 500;
 }
 
-.login__signInContainer > div > form > input {
+.register__signInContainer > div > form > input {
   height: 30px;
   margin-bottom: 10px;
   background-color: #fff;
@@ -56,9 +56,14 @@
   border-radius: 5px;
 }
 
-.login__signInButton,
-.login__signInButton:link,
-.login__signInButton:visited {
+.register__signInContainer > div > form > h6 {
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.register__signInButton,
+.register__signInButton:link,
+.register__signInButton:visited {
   background-color: #f0c14b;
   border-radius: 2px;
   width: 100%;
@@ -68,13 +73,13 @@
   border-color: #a88734 #9c7e31 #846a29;
 }
 
-.login__signInButton:hover,
-.login__signInButton:active {
+.register__signInButton:hover,
+.register__signInButton:active {
   cursor: pointer;
   box-shadow: 0 0 0 1px black;
 }
 
-.login__divider {
+.register__divider {
   text-align: center;
   position: relative;
   top: 2px;
@@ -84,7 +89,7 @@
   width: 100%;
 }
 
-.login__divider::after {
+.register__divider::after {
   content: "";
   width: 100%;
   background-color: transparent;
@@ -97,7 +102,7 @@
   z-index: 1;
 }
 
-.login__divider > h5 {
+.register__divider > h5 {
   line-height: 1;
   font-size: 12px;
   color: #767676;
@@ -109,13 +114,13 @@
   padding: 0 8px 0 7px;
 }
 
-.login__register {
+.register__register {
   width: 340px;
 }
 
-.login__registerButton,
-.login__registerButton:link,
-.login__registerButton:visited {
+.register__registerButton,
+.register__registerButton:link,
+.register__registerButton:visited {
   border-radius: 2px;
   width: 100%;
   height: 30px;
@@ -128,7 +133,7 @@
   line-height: 29px;
 }
 
-.login__registerButton:hover,
-.login__registerButton:active {
+.register__registerButton:hover,
+.register__registerButton:active {
   box-shadow: 0 0 0 1px black;
 }

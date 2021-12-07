@@ -8,6 +8,7 @@ import Checkout from "./pages/Checkout/Checkout";
 import Login from "./pages/Login/Login";
 import Payment from "./pages/Payment/Payment";
 import Orders from "./pages/Orders/Orders";
+import Register from "./pages/Register/Register";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { auth } from "./firebase";
 import { useStateValue } from "././context/StateProvider";
@@ -35,6 +36,7 @@ function App() {
     <Router>
       <div className={styles.app}>
         <Routes>
+          <Route path="/register" element={<Register />} />
           <Route
             path="/orders"
             element={
@@ -43,7 +45,7 @@ function App() {
                 <Orders />
               </>
             }
-          ></Route>
+          />
           <Route
             path="/"
             element={

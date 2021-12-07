@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import styles from "./Login.module.css";
+import styles from "./Register.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
 import {
@@ -8,22 +8,10 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
-function Login() {
+function Register() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const signInHandler = (e) => {
-    e.preventDefault();
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then((auth) => {
-        if (auth) {
-          navigate("/");
-        }
-      })
-      .catch((err) => alert(err.mes));
-  };
 
   const registerHandler = (e) => {
     e.preventDefault();
@@ -41,17 +29,17 @@ function Login() {
   };
 
   return (
-    <div className={styles.login_container}>
-      <div className={styles.login}>
+    <div className={styles.register_container}>
+      <div className={styles.register}>
         <Link to="/">
           <img
-            className={styles.login__logo}
+            className={styles.register__logo}
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png"
           />
         </Link>
 
-        <div className={styles.login__signInContainer}>
-          <h1>Sign-in</h1>
+        <div className={styles.register__signInContainer}>
+          <h1>Create account</h1>
           <div>
             <form>
               <label for="email">Email</label>
@@ -71,13 +59,14 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              <h6>❕Passwords must be at least 6 characters.</h6>
 
               <button
-                className={styles.login__signInButton}
-                onClick={signInHandler}
+                className={styles.register__signInButton}
+                onClick={registerHandler}
                 type="submit"
               >
-                Sign In
+                Create your Amazon account
               </button>
             </form>
 
@@ -87,19 +76,9 @@ function Login() {
             </p>
           </div>
         </div>
-        <div className={styles.login__register}>
-          <div className={styles.login__divider}>
-            <h5>New to Amazon?</h5>
-          </div>
-          <Link to="/register">
-            <button className={styles.login__registerButton}>
-              Create your Amazon Clone account
-            </button>
-          </Link>
-        </div>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default Register;
