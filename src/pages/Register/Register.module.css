@@ -15,7 +15,7 @@
   margin-left: auto;
 }
 
-.register__signInContainer {
+.register__registerContainer {
   width: 300px;
   height: fit-content;
   display: flex;
@@ -27,27 +27,27 @@
   margin-bottom: 22px;
 }
 
-.register__signInContainer > h1 {
+.register__registerContainer > h1 {
   font-weight: 500;
   margin-bottom: 20px;
 }
 
-.register__signInContainer > div > p {
+.register__registerContainer > div > p {
   margin-top: 15px;
   font-size: 12px;
 }
 
-.register__signInContainer > div > form {
+.register__registerContainer > div > form {
   display: flex;
   flex-direction: column;
 }
 
-.register__signInContainer > div > form > label {
+.register__registerContainer > div > form > label {
   margin-bottom: 5px;
   font-weight: 500;
 }
 
-.register__signInContainer > div > form > input {
+.register__registerContainer > div > form > input {
   height: 30px;
   margin-bottom: 10px;
   background-color: #fff;
@@ -56,14 +56,18 @@
   border-radius: 5px;
 }
 
-.register__signInContainer > div > form > h6 {
+.register__registerContainer > div > form > h6 {
   font-weight: 400;
   margin-bottom: 10px;
 }
 
-.register__signInButton,
-.register__signInButton:link,
-.register__signInButton:visited {
+.register__registerContainer > div > p {
+  margin-bottom: 26px;
+}
+
+.register__registerButton,
+.register__registerButton:link,
+.register__registerButton:visited {
   background-color: #f0c14b;
   border-radius: 2px;
   width: 100%;
@@ -73,49 +77,32 @@
   border-color: #a88734 #9c7e31 #846a29;
 }
 
-.register__signInButton:hover,
-.register__signInButton:active {
+.register__registerButton:hover,
+.register__registerButton:active {
   cursor: pointer;
   box-shadow: 0 0 0 1px black;
 }
 
 .register__divider {
-  text-align: center;
-  position: relative;
-  top: 2px;
-  padding-top: 1px;
-  margin-bottom: 14px;
-  line-height: 0;
-  width: 100%;
+  height: 44px;
+  margin-bottom: -18px;
+  z-index: 0;
+  zoom: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.14),
+    rgba(0, 0, 0, 0.03) 3px,
+    transparent
+  );
 }
 
 .register__divider::after {
-  content: "";
-  width: 100%;
-  background-color: transparent;
   display: block;
-  height: 1px;
-  border-top: 1px solid #e7e7e7;
-  position: absolute;
-  top: 50%;
-  margin-top: -1px;
+  width: 100%;
+  height: 44px;
+  background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0), #fff);
   z-index: 1;
-}
-
-.register__divider > h5 {
-  line-height: 1;
-  font-size: 12px;
-  color: #767676;
-  font-weight: 400;
-  z-index: 2;
-  position: relative;
-  display: inline-block;
-  background-color: #fff;
-  padding: 0 8px 0 7px;
-}
-
-.register__register {
-  width: 340px;
+  content: "";
 }
 
 .register__registerButton,
@@ -136,4 +123,20 @@
 .register__registerButton:hover,
 .register__registerButton:active {
   box-shadow: 0 0 0 1px black;
+}
+
+.register__signIn {
+  font-size: 13px;
+  line-height: 19px;
+  color: #111;
+}
+
+.register__signIn > a:link,
+.register__signIn > a:visited {
+  text-decoration: none;
+}
+
+.register__signIn > a:hover,
+.register__signIn > a:active {
+  text-decoration: underline;
 }

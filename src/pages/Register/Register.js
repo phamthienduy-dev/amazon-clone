@@ -38,7 +38,7 @@ function Register() {
           />
         </Link>
 
-        <div className={styles.register__signInContainer}>
+        <div className={styles.register__registerContainer}>
           <h1>Create account</h1>
           <div>
             <form>
@@ -62,7 +62,7 @@ function Register() {
               <h6>❕Passwords must be at least 6 characters.</h6>
 
               <button
-                className={styles.register__signInButton}
+                className={styles.register__registerButton}
                 onClick={registerHandler}
                 type="submit"
               >
@@ -74,6 +74,12 @@ function Register() {
               By continuing, you agree to Amazon's Fake Clone Conditions of Use
               and Privacy Notice.
             </p>
+          </div>
+          <div>
+            <div className={styles.register__divider}></div>
+          </div>
+          <div className={styles.register__signIn}>
+            Already have an account? <Link to="/login">Sign-In</Link>
           </div>
         </div>
       </div>

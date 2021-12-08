@@ -36,12 +36,6 @@
 .product button,
 .product button:link,
 .product button:visited {
-  /* background: #f0c14b;
-  border: 1px solid;
-  margin-top: 10px;
-  border-color: #a88734 #9c7e31 #846a29;
-  color: #111;
-  cursor: pointer; */
   border-radius: 8px;
   box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
   border-style: solid;
@@ -58,6 +52,7 @@
 
 .product button:hover,
 .product button:active {
-  cursor: pointer;
-  box-shadow: 0 0 0 1px black;
+  background: #f7ca00;
+  border-color: #f2c200;
+  box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
 }
