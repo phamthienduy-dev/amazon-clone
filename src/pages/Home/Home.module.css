@@ -5,6 +5,12 @@
   margin-right: auto;
   min-width: 1500px;
   background-color: rgb(234, 237, 237);
+  padding: 0 50px;
+}
+
+.home__container {
+  width: 100%;
+  /* height: 100vh; */
 }
 
 .home__row {
@@ -14,9 +20,9 @@
   margin-right: 5px;
 }
 
-.home__image {
+.home__image > img {
   width: 100%;
   z-index: -1;
-  margin-bottom: -150px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  margin-bottom: -300px;
+  mask-image: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, 0));
 }

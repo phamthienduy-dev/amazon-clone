@@ -20,7 +20,11 @@ function Checkout() {
         />
 
         <div className={styles.checkout__product}>
-          <h2 className={styles.checkout__title}>Shopping Cart</h2>
+          <h2 className={styles.checkout__title}>
+            {basket.length === 0
+              ? "Your Amazon Cart is empty."
+              : "Shopping Cart"}
+          </h2>
           <span className={styles.checkout__price}>Price</span>
 
           {basket.map((item) => (

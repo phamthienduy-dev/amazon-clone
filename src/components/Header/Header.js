@@ -47,7 +47,7 @@ function Header() {
             </span>
           </div>
         </Link>
-        <Link to={"/orders"}>
+        <Link to={user ? "/orders" : "/login"}>
           <div className={styles.header__option}>
             <span className={styles.header__optionLineOne}>Returns</span>
             <span className={styles.header__optionLineTwo}>& Orders</span>

@@ -1,0 +1,36 @@
+.homeSlider__slider {
+  width: 100%;
+  position: relative;
+  margin-bottom: -300px;
+}
+
+.homeSlider__slider img {
+  mask-image: linear-gradient(to bottom, rgb(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.homeSlider__nextSlide {
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 320px;
+  width: 80px;
+  font-size: 64px;
+  font-weight: 300;
+  padding-top: 120px;
+  cursor: pointer;
+}
+
+.homeSlider__prevSlide {
+  z-index: 1;
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 320px;
+  width: 80px;
+  font-size: 64px;
+  font-weight: 300;
+  padding-top: 120px;
+  cursor: pointer;
+}

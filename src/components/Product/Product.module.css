@@ -20,22 +20,41 @@
 
 .product__price {
   margin-top: 5px;
+  font-size: 21px;
+  font-weight: 100;
+  position: relative;
+}
+
+.product__price > small {
+  position: absolute;
+  top: 2px;
+  font-size: 12px;
+}
+
+.product__price > span {
+  margin-left: 7px;
 }
 
 .product__rating {
   display: flex;
 }
 
+.product__title {
+  font-size: 16px;
+  line-height: 24px;
+  color: #0f1111;
+}
+
 .product img {
-  max-height: 200px;
+  max-height: 150px;
   width: 100%;
   object-fit: contain;
-  margin-bottom: 15px;
 }
 
 .product button,
 .product button:link,
 .product button:visited {
+  margin-top: 10px;
   border-radius: 8px;
   box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
   border-style: solid;
